@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "react-native-camera-detection",
+    "slug": "react-native-camera-detection",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "react-native-camera-detection"
+}
