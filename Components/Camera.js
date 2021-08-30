@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Camera } from "expo-camera";
+import DrawRectangle from "./DrawRectangle";
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -21,7 +22,10 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}></Camera>
+      {/* <View style = {}></View> */}
+      <Camera style={styles.camera} type={type}>
+        <DrawRectangle />
+      </Camera>
       {/* <View style={styles.buttonContainer}>
         <TouchableOpacity></TouchableOpacity>
       </View> */}

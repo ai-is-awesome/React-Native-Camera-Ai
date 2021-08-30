@@ -18,6 +18,7 @@ import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
 import org.unimodules.core.interfaces.Package;
 import org.unimodules.core.interfaces.SingletonModule;
+import org.reactnative.camera.RNCameraPackage;
 import expo.modules.updates.UpdatesController;
 
 import com.facebook.react.bridge.JSIModulePackage;
@@ -42,7 +43,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
-      packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+      packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider), new RNCameraPackage());
       return packages;
     }
 
