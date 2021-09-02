@@ -1,6 +1,8 @@
 import * as tf from "@tensorflow/tfjs";
 import "@tensorflow/tfjs-react-native";
-import { loadGraphModel } from "@tensorflow/tfjs-converter";
+// import { loadGraphModel } from "@tensorflow/tfjs-converter";
+import { cameraWithTensors } from "@tensorflow/tfjs-react-native";
+import { Camera } from "expo-camera";
 
 import {
   fetch,
@@ -44,14 +46,24 @@ export default class Tensorflow extends React.Component {
     } catch (e) {
       this.setState({ error: "Unable to load model" });
     }
+  }
 
-    // try {
-    //   const model = await loadGraphModel("../bin/model.json");
-    //   console.log("model: ", model);
-    //   this.setState({ model: model });
-    // } catch (e) {
-    //   console.log("error: ", e);
-    // }
+  async getPrediction(tensor) {
+    tensor4D = tf.expandDims(tensor);
+
+    const prediction = await this.state.model.executeAsync(tensor4D);
+    const scores = prediction[2].arraySync();
+    console.log("probability: ", scores[0]);
+    console.log("prediction", prediction);
+
+    return prediction;
+  }
+
+  async handleCameraStream(imageAsTensors) {
+    const loop = async () => {
+      const nextImageTensor = await imageAsTensors.next().value;
+      this.getPrediction();
+    };
   }
 
   render() {

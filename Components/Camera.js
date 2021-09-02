@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Camera } from "expo-camera";
 import DrawRectangle from "./DrawRectangle";
+import ViewFinderComponent from "./ViewFinder";
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -24,7 +25,7 @@ export default function App() {
     <View style={styles.container}>
       {/* <View style = {}></View> */}
       <Camera style={styles.camera} type={type}>
-        <DrawRectangle />
+        <ViewFinderComponent color={"white"} />
       </Camera>
       {/* <View style={styles.buttonContainer}>
         <TouchableOpacity></TouchableOpacity>
