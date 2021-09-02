@@ -13,14 +13,14 @@ import {
 
 import { Text, View, Button } from "react-native";
 
-export default TensorflowFunctional = () => {
+const TensorflowFunctional = () => {
   const [isTfReady, setIsTfReady] = useState(false);
   const [model, setModel] = useState(null);
   const textureDims = { width: 1600, height: 1200 };
 
   //   const  TensorCamera
 
-  const loadModel = () => {
+  const loadModel = async () => {
     console.log("loading model");
     const modelJson = require("../bin/model.json");
     const modelWeights = require("../bin/group1-shard1of1.bin");
@@ -32,7 +32,7 @@ export default TensorflowFunctional = () => {
       setModel(model);
       console.log("Model : is set", typeof model);
     } catch (e) {
-      this.setState({ error: "Unable to load model" });
+      // this.setState({ error: "Unable to load model" });
     }
   };
   const getPrediction = async (tensor) => {
@@ -71,12 +71,14 @@ export default TensorflowFunctional = () => {
     );
   };
 
-  useEffect(() => {
-    loadModel();
-  }, []);
+  // useEffect(() => {
+  //   loadModel();
+  // }, []);
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
+    <View>
       <Text>HEllo world</Text>
     </View>
   );
 };
+
+export default TensorflowFunctional;

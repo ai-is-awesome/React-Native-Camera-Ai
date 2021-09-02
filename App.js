@@ -5,10 +5,11 @@ import { StyleSheet, Text, View } from "react-native";
 // import Tensorflow from "./Components/Tensorflow";
 // import DrawRectangle from "./Components/DrawRectangle";
 // import ViewFinderComponent from "./Components/ViewFinder";
-import TensorFlowFunctional from "./Components/TensorflowFunctional";
+import TensorflowFunctional from "./Components/TensorflowFunctional";
 
 export default function App() {
-  return <TensorFlowFunctional />;
+  console.log("app reached");
+  return <TensorflowFunctional />;
 }
 
 const styles = StyleSheet.create({
